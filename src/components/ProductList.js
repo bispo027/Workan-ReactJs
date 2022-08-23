@@ -1,9 +1,7 @@
 import React from 'react'
 
 export const ProductList = (props) => {
-  // TODO: display appropriate header
-  // TODO: display only chosen columns
-  // TODO: display products as new table rows
+
   return (
     <div id="product-list">
       <header>
@@ -19,6 +17,18 @@ export const ProductList = (props) => {
           </tr>
         </thead>
         <tbody>
+          {
+            props.products.map(product => {
+              return (
+                <tr>
+                  <td>{product.id}</td>
+                  <td>{product.name}</td>
+                  <td>{product.department}</td>
+                  <td>{product.currency} {product.price}</td>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
     </div>

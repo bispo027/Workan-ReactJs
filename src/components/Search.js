@@ -28,7 +28,8 @@ export const Search = (props) => {
     // TODO: implement handler for filtering products by price range
   }
 
-  let displayedProducts = [];
+  let displayedProducts = props.products;
+
   return (
     <div className="Products">
       <FilterForm
@@ -42,7 +43,7 @@ export const Search = (props) => {
 
       <ProductList
         products={displayedProducts}
-        columns={''} />
+        columns={columns} />
     </div>
   );
 }
