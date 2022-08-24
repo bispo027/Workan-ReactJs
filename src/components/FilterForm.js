@@ -14,14 +14,14 @@ export const FilterForm = (props) => {
         id="priceFrom"
         name="priceFrom"
         placeholder="Price from..."
-        value={props.priceFrom || ''}
+        value={props.priceFrom}
         onChange={(e) => onPriceInputChange(e)} />
       <label htmlFor="priceTo">Price To:</label>
       <input
         type="number"
         id="priceTo"
         name="priceTo"
-        value={props.priceTo || ''}
+        value={props.priceTo}
         placeholder="Price to..."
         onChange={(e) => onPriceInputChange(e)} />
     </div>
