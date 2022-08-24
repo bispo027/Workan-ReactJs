@@ -1,36 +1,54 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 
 export const ProductList = (props) => {
 
+  const ProductTd = (data) => {
+    const { name, product } = data
+    return (
+      <td>{product[name]}</td>
+    )
+  }
+
   return (
     <div id="product-list">
       <header>
-        <strong>Product List (0 items)</strong>
+        <strong>Product List ({props.products.length} items)</strong>
       </header>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Price</th>
+            {
+              Object.keys(props.columns).map((column, index) => {
+                if (props.columns[column]) {
+                  return <th key={index}>{column}</th>
+                }
+              })
+            }
           </tr>
         </thead>
         <tbody>
           {
-            props.products.map(product => {
+            props.products.map((product) => {
               return (
-                <tr>
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.department}</td>
-                  <td>{product.currency} {product.price}</td>
+                <tr key={product.id}>
+                  {
+                    Object.keys(props.columns).map((column, index) => {
+                      if (props.columns[column]) {
+                        return <ProductTd
+                          key={index}
+                          product={product}
+                          name={column}
+                        />
+                      }
+                    })
+                  }
                 </tr>
               )
             })
           }
         </tbody>
       </table>
-    </div>
+    </div >
   )
 }
